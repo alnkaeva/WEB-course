@@ -12,6 +12,7 @@ header{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 main{
+    margin: 10px 20px 45px;
     font-family: 'Courier New', Courier, monospace;
 }
 footer {
@@ -20,6 +21,12 @@ footer {
     background-color: lightcoral;
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+
 }
 .menu{
     border: 3px solid rgb(52, 168, 207);
