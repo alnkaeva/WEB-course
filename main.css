@@ -21,6 +21,18 @@ footer {
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.menu{
+    border: 3px solid rgb(52, 168, 207);
+    border-radius: 10px;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+} 
+.menu:hover{
+    background-color: white;
+    box-shadow: 10px 10px 20px rgb(53, 49, 49);
+    transition: 1s;
+}
 a {
     text-decoration: none;
     transition: 0.5s 1s;
