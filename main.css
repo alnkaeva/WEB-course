@@ -23,6 +23,7 @@ footer {
 }
 a {
     text-decoration: none;
+    transition: 0.5s 1s;
 }
 a:link{
     color: blue;
@@ -37,6 +38,7 @@ a:hover{
     text-decoration: underline;
     background-color: blanchedalmond;
     box-shadow: 5px 5px 7px black;
+    transition: 0.3s;
 }
 a:active {
     color: black;
