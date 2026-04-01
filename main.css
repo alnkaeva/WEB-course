@@ -24,6 +24,24 @@ footer {
 a {
     text-decoration: none;
 }
+a:link{
+    color: blue;
+    text-decoration: double;
+    font-weight: bold;
+}
+a:visited{
+    color: rgb(237, 20, 20);
+}
+a:hover{
+    color: rgb(91, 19, 19);
+    text-decoration: underline;
+    background-color: blanchedalmond;
+    box-shadow: 5px 5px 7px black;
+}
+a:active {
+    color: black;
+    opacity: 0.3;
+}
 h1 {
     text-align: center;
 }
