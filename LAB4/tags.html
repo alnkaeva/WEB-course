@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .tags {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-top: 60px;
+        }
+        .tag {
+            position: absolute;
+            cursor: pointer;
+        }
+        .tag:hover {
+            font-size: 110px;
+            z-index: 5;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            animation-play-state: paused;
+        }
+        @keyframes move1 {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: -15px;
+            }
+        }
+        @keyframes move2 {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: 15px;
+            }
+        }
+        @keyframes move3 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: 20px;
+            }
+        }
+        @keyframes move4 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: -20px;
+            }
+        }
+        @keyframes move5 {
+            from {
+                margin-top: 0;
+                margin-left: 0;
+            }
+            to {
+                margin-top: -10px;
+                margin-left: 10px;
+            }
+        }
+        @keyframes move6 {
+            from {
+                margin-top: 0;
+                margin-left: 0;
+            }
+            to {
+                margin-top: 10px;
+                margin-left: -10px;
+            }
+        }
+        @keyframes move7 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: 25px;
+            }
+        }
+        @keyframes move8 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: -25px;
+            }
+        }
+        @keyframes move9 {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: -25px;
+            }
+        }
+        @keyframes move10 {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: 25px;
+            }
+        }
+        @keyframes move11 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: -30px;
+            }
+        }
+        @keyframes move12 {
+            from {
+                margin-top: 0;
+                margin-left: 0;
+            }
+            to {
+                margin-top: -20px;
+                margin-left: 15px;
+            }
+        }
+        @keyframes move13 {
+            from {
+                margin-top: 0;
+                margin-left: 0;
+            }
+            to {
+                margin-top: 20px;
+                margin-left: -15px;
+            }
+        }
+        @keyframes move14 {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: 30px;
+            }
+        }
+        @keyframes move15 {
+            from {
+                margin-top: 0;
+            }
+            to {
+                margin-top: -30px;
+            }
+        }
+        .t1 {
+            top: 20px;
+            left: 300px;
+            font-size: 50px;
+            color: magenta;
+            transform: rotate(30deg);
+            animation: move1 3s ease-in-out infinite alternate;
+        }
+        .t2 {
+            top: 60px;
+            left: 400px;
+            font-size: 30px;
+            color: black;
+            transform: rotate(-5deg);
+            animation: move2 4s ease-in-out infinite alternate;
+        }
+        .t3 {
+            top: 80px;
+            left: 600px;
+            font-size: 80px;
+            color: gray;
+            transform: rotate(20deg);
+            animation: move3 5s ease-in-out infinite alternate;
+        }
+        .t4 {
+            top: 150px;
+            left: 100px;
+            font-size: 15px;
+            color: green;
+            transform: rotate(10deg);
+            animation: move4 3.5s ease-in-out infinite alternate;
+        }
+        .t5 {
+            top: 200px;
+            left: 50px;
+            font-size: 40px;
+            color: violet;
+            transform: rotate(0deg);
+            animation: move5 4.2s ease-in-out infinite alternate;
+        }
+        .t6 {
+            top: 220px;
+            left: 200px;
+            font-size: 20px;
+            color: black;
+            transform: rotate(0deg);
+            animation: move6 3.8s ease-in-out infinite alternate;
+        }
+        .t7 {
+            top: 250px;
+            left: 300px;
+            font-size: 80px;
+            color: black;
+            transform: rotate(0deg);
+            animation: move7 5s ease-in-out infinite alternate;
+        }
+        .t8 {
+            top: 220px;
+            left: 500px;
+            font-size: 25px;
+            color: blue;
+            transform: rotate(0deg);
+            animation: move8 4.5s ease-in-out infinite alternate;
+        }
+        .t9 {
+            top: 300px;
+            left: 150px;
+            font-size: 20px;
+            color: gray;
+            transform: rotate(0deg);
+            animation: move9 3.2s ease-in-out infinite alternate;
+        }
+        .t10 {
+            top: 330px;
+            left: 200px;
+            font-size: 25px;
+            color: green;
+            transform: rotate(0deg);
+            animation: move10 4.8s ease-in-out infinite alternate;
+        }
+        .t11 {
+            top: 350px;
+            left: 250px;
+            font-size: 20px;
+            color: black;
+            transform: rotate(0deg);
+            animation: move11 5.5s ease-in-out infinite alternate;
+        }
+        .t12 {
+            top: 350px;
+            left: 500px;
+            font-size: 50px;
+            color: red;
+            transform: rotate(-10deg);
+            animation: move12 3.7s ease-in-out infinite alternate;
+        }
+        .t13 {
+            top: 380px;
+            left: 550px;
+            font-size: 40px;
+            color: yellow;
+            transform: rotate(10deg);
+            animation: move13 4.1s ease-in-out infinite alternate;
+        }
+        .t14 {
+            top: 380px;
+            left: 450px;
+            font-size: 30px;
+            color: green;
+            transform: rotate(0deg);
+            animation: move14 5.3s ease-in-out infinite alternate;
+        }
+        .t15 {
+            top: 120px;
+            left: 80px;
+            font-size: 15px;
+            color: magenta;
+            transform: rotate(0deg);
+            animation: move15 3.9s ease-in-out infinite alternate;
+        }
+        </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 4</header>
+    <main>
+        <h1>Облако тегов: CSS</h1>
+        <div class="tags">
+            <div class="tag t1">position</div>
+            <div class="tag t2">absolute</div>
+            <div class="tag t3">relative</div>
+            <div class="tag t4">z-index</div>
+            <div class="tag t5">overflow</div>
+            <div class="tag t6">flex</div>
+            <div class="tag t7">grid</div>
+            <div class="tag t8">margin</div>
+            <div class="tag t9">padding</div>
+            <div class="tag t10">display</div>
+            <div class="tag t11">float</div>
+            <div class="tag t12">clear</div>
+            <div class="tag t13">top</div>
+            <div class="tag t14">left</div>
+            <div class="tag t15">transform</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
