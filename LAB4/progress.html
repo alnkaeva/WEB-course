@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель прогресса</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .container {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 500px;
+            height: 200px;
+            border: 1px solid darkred;
+            background: azure;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: darkred;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .rever {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .progress-bar {
+            margin: 10px;
+            width: 400px;
+            height: 20px;
+            border: 1px solid #a33;
+            background: #eee;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            width: 0;
+            background: darkred;
+            transition: width 5s linear;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 15px;
+            width: 200px;
+            border: none;
+            background: darkred;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 3px 6px black;
+            transition: 0.2s;
+        }
+        button:hover {
+            box-shadow: 0 6px 12px black;
+        }
+        button:active {
+            box-shadow: none;
+        }
+        button:active ~ .progress-bar .progress {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 4</header>
+    <main>
+        <div class="container">
+            <p>Степень прогресса</p>
+            <div class="rever">
+                <button>Нажмите и удерживайте</button>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
