@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        img {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin: auto;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        div {
+            border: 1px solid black;
+            border-radius: 50%;
+            box-shadow: 2px 0px 5px gray;
+            background-color: azure;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+        .first {
+            width: 50px;
+            height: 30px;
+            bottom: 150px;
+            left: 720px;
+        }
+        .second {
+            width: 70px;
+            height: 50px;
+            bottom: 200px;
+            left: 750px;
+        }
+        .third {
+            width: 90px;
+            height: 70px;
+            bottom: 250px;
+            left: 780px;
+        }
+        .fourth {
+            width: 180px;
+            height: 100px;
+            bottom: 320px;
+            left: 800px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-size: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 30px;
+        }
+        img:hover ~ div {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 3</header>
+    <main>
+        <img src="../scott.jpg">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+        <div class="fourth">Чесночный хлеб</div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
