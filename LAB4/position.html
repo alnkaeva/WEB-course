@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        div{
+            width: 300px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            background-color: white;
+            border: 1px dotted darkgreen;
+            margin: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        .position-relative {
+            position: relative;
+            left: 140px;
+            top: -130px;
+            z-index: -1;
+        }
+        .position-relative:hover {
+            z-index: 2;
+        }
+        .position-absolute1 {
+            position: absolute;
+            left: 320px;
+            bottom: 80px;
+        }
+        .position-absolute2 {
+            position: absolute;
+            left: 400px;
+            bottom: 200px;
+        }
+        .position-absolute3 {
+            position: absolute;
+            left: 500px;
+            bottom: 100px;
+        }
+        .position-absolute4 {
+            position: absolute;
+            left: 350px;
+            bottom: 150px;
+        }
+        .position-absolute1:hover, .position-absolute2:hover, .position-absolute3:hover, .position-absolute4:hover {
+            z-index: 3;
+            width: 400px;
+            height: 100px;
+            font-size: 50px;
+            padding-top: 22px;
+            background-color: brown;
+            color: antiquewhite;
+            box-shadow: 3px 5px 3px antiquewhite;
+            border: 2px solid antiquewhite;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <div>static</div>
+        <div>static</div>
+        <div class="position-relative">relative</div>
+        <div class="position-absolute2">Absolute 2</div>
+        <div>static</div>
+        <div class="position-absolute1">Absolute 1</div>
+        <div>static</div>
+        <div class="position-absolute4">Absolute 4</div>
+        <div class="position-absolute3">Absolute 3</div>
+        <div>static</div>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
