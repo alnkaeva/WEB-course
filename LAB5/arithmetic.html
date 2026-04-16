@@ -127,6 +127,12 @@
 
             alert('Возведение ' + a + ' в степень ' + b + ' равно ' + result);
         }
+        function changeOutput(buttonNum, backColor, textColor) {
+            let output = document.getElementById('output')
+            output.innerHTML = 'Нажата кнопка ' + buttonNum
+            output.style.backgroundColor = backColor
+            output.style.color = textColor
+        }
     </script>
     <style>
         .message {
@@ -149,6 +155,15 @@
         footer{
             cursor: pointer;
         }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
+        .buttons {
+            display: inline-block;
+            margin: 10px 10px 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -162,6 +177,15 @@
         <div class="message" onclick="showDiv()">Найти частное чисел</div>
         <div class="message" onclick="showExpon()">Найти возведение чисел</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div class="buttons">
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'lime', 'salmon')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'azure', 'darkred')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'brown', 'bisque')">
+        </div>
+
+        <div id="output"></div>
     </main>
     <footer ondblclick="showHello()">
         &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
