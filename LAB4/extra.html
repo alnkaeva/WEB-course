@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container {
+            width: 220px;
+            padding: 10px;
+            margin: 40px;
+            text-align: center;
+            border: 1px solid darkred;
+            background-color: salmon;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .container:hover {
+            animation: grow 0.5s forwards;
+            transition: transform 0.5s;
+            background-color: antiquewhite;
+        }
+        img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            margin: 10px;
+        }
+        .information {
+            visibility: hidden;
+            opacity: 0;
+            font-size: 14px;
+            text-align: left;
+        }
+        .container:hover .information{
+            visibility: visible;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+            }
+            to { 
+                opacity: 1; 
+            }
+        }
+        @keyframes grow {
+            from { 
+                transform: scale(1); 
+            }
+            to { 
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 4</header>
+    <main>
+        <div class="container">
+            <img src="series-img/desperatehousewives.jpg">
+            <h2>Отчаянные домохозяйки</h2>
+            <div class="information">
+                <p>Годы: 2004–2012<br>
+                Актёры: Тери Хэтчер, Фелисити Хаффман, Марсия Кросс, Ева Лонгория<br>
+                Сюжет: История жизни домохозяек с улицы Вистерия Лейн, где за 
+                идеальной картинкой скрываются тайны, интриги и преступления.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/friends.jpg">
+            <h2>Друзья</h2>
+            <div class="information">
+                <p>Годы: 1994–2004<br>
+                Актёры: Дженнифер Энистон, Кортни Кокс, Лиза Кудроу, 
+                Мэтт Леблан, Мэттью Перри, Дэвид Швиммер<br>
+                Сюжет: Шесть друзей живут в Нью-Йорке, строят карьеру, 
+                влюбляются и постоянно попадают в забавные ситуации.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/himym.jpg">
+            <h2>Как я встретил вашу маму</h2>
+            <div class="information">
+                <p>Годы: 2005–2014<br>
+                Актёры: Джош Рэднор, Нил Патрик Харрис, Коби Смолдерс, 
+                Джейсон Сигел, Элисон Хэнниган<br>
+                Сюжет: Тед рассказывает своим детям длинную историю о том, 
+                как он встретил их мать, вспоминая свою жизнь и друзей.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/iasip.jpg">
+            <h2>В Филадельфии всегда солнечно</h2>
+            <div class="information">
+                <p>Годы: 2005–н.в.<br>
+                Актёры: Чарли Дэй, Гленн Хауэртон, Роб Макэлхенни,
+                Кейтлин Олсон, Дэнни ДеВито<br>
+                Сюжет: Компания друзей владеет баром и постоянно попадает 
+                в абсурдные и часто аморальные ситуации.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/parksandrecreation.jpg">
+            <h2>Парки и зоны отдыха</h2>
+            <div class="information">
+                <p>Годы: 2009–2015<br>
+                Актёры: Эми Полер, Ник Офферман, Обри Плаза, Крис Пратт<br>
+                Сюжет: Оптимистичная чиновница Лесли Ноуп работает в 
+                департаменте парков и пытается улучшить жизнь своего города.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/scrubs.jpg">
+            <h2>Клиника</h2>
+            <div class="information">
+                <p>Годы: 2001–2010<br>
+                Актёры: Зак Брафф, Дональд Фэйсон, Сара Чок, Джуди Рейес<br>
+                Сюжет: Молодые врачи проходят практику в больнице, 
+                сталкиваясь с трудностями медицины и личной жизни.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/sexandthecity.jpg">
+            <h2>Секс в большом городе</h2>
+            <div class="information">
+                <p>Годы: 1998–2004<br>
+                Актёры: Сара Джессика Паркер, Ким Кэттролл, 
+                Кристин Дэвис, Синтия Никсон<br>
+                Сюжет: Четыре подруги в Нью-Йорке обсуждают отношения, 
+                карьеру и личную жизнь.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/thebigbangtheory.jpeg">
+            <h2>Теория большого взрыва</h2>
+            <div class="information">
+                <p>Годы: 2007–2019<br>
+                Актёры: Джим Парсонс, Джонни Галэки, Кейли Куоко, 
+                Саймон Хелберг, Кунал Найяр<br>
+                Сюжет: Группа гиков-физиков живёт своей жизнью, пока в 
+                неё не вмешивается их соседка Пенни.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/themiddle.webp">
+            <h2>Бывает и хуже</h2>
+            <div class="information">
+                <p>Годы: 2009–2018<br>
+                Актёры: Патриша Хитон, Нил Флинн, Чарли МакДермотт<br>
+                Сюжет: Семья из среднего класса пытается справляться 
+                с повседневными проблемами и сохранять оптимизм.</p>
+            </div>
+        </div>
+        <div class="container">
+            <img src="series-img/theoffice.jpg">
+            <h2>Офис</h2>
+            <div class="information">
+                <p>Годы: 2005–2013<br>
+                Актёры: Стив Карелл, Рэйн Уилсон, Джон Красински, Дженна Фишер<br>
+                Сюжет: Псевдодокументальный сериал о жизни сотрудников
+                 офиса бумажной компании и их странного босса.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
