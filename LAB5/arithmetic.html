@@ -15,6 +15,14 @@
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
+        function showAuthor() {
+            let author = "Авторка страницы:\nНиколаева Алёна Андреевна"
+            alert(author)
+        }
+        function showHello(){
+            let hello = "Приветствую на своей странице!\nПравила моей странички:\n1.Я тут главная!!!\n2.Фанаты хеллюу китти сразу в друзья\n3.Куроми крутышка!\n4.антифем на выход\n5.если не согласен прочитай первое правило\n7.можете не писать я всеровно игнорю"
+            alert(hello)
+        }
     </script>
     <style>
         .message {
@@ -29,16 +37,21 @@
             padding-top: 10px;
             cursor: pointer;
         }
-
+        header{
+            cursor: pointer;
+        }
+        footer{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <header>НГТУ, ФБ, Лабораторная работа 5</header>
+    <header onclick="showAuthor()">НГТУ, ФБ, Лабораторная работа 5</header>
     <main>
         <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
-        <div class="message">Узнать, кто автор страницы</div>
+        <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
-    <footer>
+    <footer ondblclick="showHello()">
         &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
     </footer>
 </body>
