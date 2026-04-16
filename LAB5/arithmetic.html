@@ -25,6 +25,22 @@
             let hello = "Приветствую на своей странице!\nПравила моей странички:\n1.Я тут главная!!!\n2.Фанаты хеллюу китти сразу в друзья\n3.Куроми крутышка!\n4.антифем на выход\n5.если не согласен прочитай первое правило\n7.можете не писать я всеровно игнорю";
             alert(hello);
         }
+        function showDif() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a - b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showMulti() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a * b;
+            alert('Произведение ' + a + ' и ' + b + ' равна ' + result);
+        }
     </script>
     <style>
         .message {
@@ -39,6 +55,7 @@
             border-radius: 10px;
             padding-top: 10px;
             cursor: pointer;
+            margin-top: 10px;
         }
         header{
             cursor: pointer;
@@ -54,6 +71,8 @@
         <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
         <div class="message" onclick="showSum()">Найти сумму чисел</div>
+        <div class="message" onmouseenter="showDif()">Найти разность чисел</div>
+        <div class="message" oncontextmenu="showMulti()">Найти произведение чисел</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
     <footer ondblclick="showHello()">
