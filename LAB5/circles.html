@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function hideCircle(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        function showAllCircles() {
+            document.getElementById('c1').classList.remove('hidden');
+            document.getElementById('c2').classList.remove('hidden');
+            document.getElementById('c3').classList.remove('hidden');
+            document.getElementById('c4').classList.remove('hidden');
+            document.getElementById('c5').classList.remove('hidden');
+            document.getElementById('c6').classList.remove('hidden');
+            document.getElementById('c7').classList.remove('hidden');
+            document.getElementById('c8').classList.remove('hidden');
+            document.getElementById('c9').classList.remove('hidden');
+            document.getElementById('c10').classList.remove('hidden');
+        }
+    </script>
+    <style>
+        main {
+            position: relative;
+            min-height: 550px;
+            margin: 20px;
+        }
+        div {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .hidden {
+            transform: scale(0);
+            opacity: 0;
+        }
+        #c1 { background: red; top: 30px; left: 20px; }
+        #c2 { background: orange; top: 120px; left: 300px; }
+        #c3 { background: yellow; color: black; top: 200px; left: 80px; }
+        #c4 { background: green; top: 280px; left: 400px; }
+        #c5 { background: cyan; color: black; top: 60px; left: 500px; }
+        #c6 { background: blue; top: 350px; left: 150px; }
+        #c7 { background: purple; top: 170px; left: 550px; }
+        #c8 { background: pink; color: black; top: 420px; left: 50px; }
+        #c9 { background: brown; top: 470px; left: 350px; }
+        #c10 { background: gray; top: 90px; left: 700px; }
+        button {
+            width: 200px;
+            height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: brown;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: aliceblue;
+            border: 2px solid salmon;
+            border-radius: 20px;
+            margin-top: 550px;
+        }
+        button:hover {
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        button:active {
+            transform: translateY(15px);
+            background-color: salmon;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 5</header>
+    <main>
+        <div id="c1" onclick="hideCircle('c1')">1</div>
+        <div id="c2" onclick="hideCircle('c2')">2</div>
+        <div id="c3" onclick="hideCircle('c3')">3</div>
+        <div id="c4" onclick="hideCircle('c4')">4</div>
+        <div id="c5" onclick="hideCircle('c5')">5</div>
+        <div id="c6" onclick="hideCircle('c6')">6</div>
+        <div id="c7" onclick="hideCircle('c7')">7</div>
+        <div id="c8" onclick="hideCircle('c8')">8</div>
+        <div id="c9" onclick="hideCircle('c9')">9</div>
+        <div id="c10" onclick="hideCircle('c10')">10</div>
+        <button onclick="showAllCircles()">Вернуться</button>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
