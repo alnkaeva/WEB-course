@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function count(){
+            let inputAmountKinderBueno = document.getElementById("KinderBueno");
+            let inputAmountKinderBuenoWhite = document.getElementById("KinderBuenoWhite");
+            let inputAmountKinderCountry = document.getElementById("KinderCountry");
+            let inputAmountKinderMaxi = document.getElementById("KinderMaxi");
+
+            let AmountKinderBueno = parseInt(inputAmountKinderBueno.value) || 0;
+            let AmountKinderBuenoWhite = parseInt(inputAmountKinderBuenoWhite.value) || 0;
+            let AmountKinderCountry = parseInt(inputAmountKinderCountry.value) || 0;
+            let AmountKinderMaxi = parseInt(inputAmountKinderMaxi.value) || 0;
+
+            let result = (AmountKinderBueno * 100) + (AmountKinderBuenoWhite * 110) + (AmountKinderCountry * 80) + (AmountKinderMaxi * 60);
+
+            let output = document.getElementById("output");
+            output.innerHTML = "Общая цена: " + result;
+        } 
+        function clearCart(){
+            document.getElementById("KinderBueno").value = "";
+            document.getElementById("KinderBuenoWhite").value = "";
+            document.getElementById("KinderCountry").value = "";
+            document.getElementById("KinderMaxi").value = "";
+            document.getElementById("output").innerHTML = "";
+        }
+    </script>
+    <style>
+        .cart {
+            width: 500px;
+            height: auto;
+            border: 3px solid salmon;
+            border-radius: 10%;
+            padding: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input {
+            width: 218px;
+            height: 30px;
+            border: 3px solid salmon;
+            padding: 3px;
+        }
+        input:focus {
+            box-shadow: 2px 3px 4px;
+            outline: none;
+        }
+        .output {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+        }
+        button {
+            width: 200px;
+            height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: brown;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: aliceblue;
+            border: 2px solid salmon;
+            border-radius: 20px;
+            margin: 10px;
+        }
+        button:hover {
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        button:active {
+            transform: translateY(15px);
+            background-color: salmon;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 5</header>
+    <main>
+        <div class="cart">
+            <div class="kinder-bueno">
+                <h1>Kinder Bueno 100р/шт</h1>
+                <p>Выберите нужное количество</p>
+                <input type="number" id="KinderBueno" placeholder="кол-во" min="0">
+            </div>
+            <div class="kinder-bueno-white">
+                <h1>Kinder Bueno с белым шоколадом 110р/шт</h1>
+                <p>Выберите нужное количество</p>
+                <input type="number" id="KinderBuenoWhite" placeholder="кол-во" min="0">
+            </div>
+            <div class="kinder-country">
+                <h1>Kinder Country 80р/шт</h1>
+                <p>Выберите нужное количество</p>
+                <input type="number" id="KinderCountry" placeholder="кол-во" min="0">
+            </div>
+            <div class="kinder-maxi">
+                <h1>Kinder Maxi 60р/шт</h1>
+                <p>Выберите нужное количество</p>
+                <input type="number" id="KinderMaxi" placeholder="кол-во" min="0">
+            </div>
+            <div class="output">
+                <button onclick="count()">Рассчитать</button>
+                <button onclick="clearCart()">Очистить</button>
+            </div>
+            <h2 id="output"></h2>
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
