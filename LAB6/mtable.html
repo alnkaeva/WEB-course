@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showMutipleTable() {
+            let inputfactor = document.getElementById('first')
+            let factor = parseInt(inputfactor.value)
+
+            let inputstart = document.getElementById('second')
+            let start = parseInt(inputstart.value)
+
+            let inputend = document.getElementById('third')
+            let end = parseInt(inputend.value)
+
+            let tbl = document.getElementById('mtable');
+            tbl.innerHTML = '<h1>Таблица умножения</h1>';
+            if (start <= end){
+                for (start; start <= end; start++) {
+                    let s = `<div>${start} * ${factor} = ${start * factor}</div>`;
+                    tbl.innerHTML += s;
+                }
+            }
+            else {
+                for (start; start >= end; start--) {
+                    let s = `<div>${start} * ${factor} = ${start * factor}</div>`;
+                    tbl.innerHTML += s;
+                }
+            }
+        }
+    </script>
+    <style>
+        input {
+            width: 218px;
+            height: 30px;
+            border: 3px solid salmon;
+            padding: 3px;
+        }
+        input:focus {
+            box-shadow: 2px 3px 4px;
+            outline: none;
+        }
+        button {
+            width: 200px;
+            height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: brown;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: aliceblue;
+            border: 2px solid salmon;
+            border-radius: 20px;
+            margin: 10px;
+        }
+        button:hover {
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        button:active {
+            transform: translateY(15px);
+            background-color: salmon;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 6</header>
+    <main>
+        <div id="mtable"></div>
+        <hr style="border: 1px dashed brown;">
+        <p>Умножить на</p>
+        <input type="number" min="0" max="10" placeholder="Введите первое число" id="first">
+        <p>Начать с</p>
+        <input type="number" min="0" placeholder="Введите второе число" id="second">
+        <p>Закончить на</p>
+        <input type="number" min="0" placeholder="Введите третье число" id="third"><br>
+        <button onclick="showMutipleTable()">Таблица</button>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
