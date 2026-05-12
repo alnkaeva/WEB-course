@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script src="books.js"></script>
+    <script>
+    function showBooks() {
+        const bookList = document.getElementById('bookList');
+        let output = "";
+        for (let i = 0; i < books.length; i++) {
+            let divStyle = "";
+            let extraContent = "";
+            if (!books[i].inStock) {
+                divStyle += "opacity: 0.5; ";
+                extraContent += `<p><b>Нет в наличии</b></p>`;
+            }
+            if (books[i].bestseller) {
+                divStyle += "background-color: brown; color: beige; ";
+                output += `
+                    <div style="${divStyle}">
+                        <b>${books[i].author}.</b>
+                        <i>${books[i].name}</i>
+                        &mdash; ${books[i].publicationYear}
+                        <p>${books[i].price}$</p>
+                        <p><b>Бестселлер</b></p>
+                        ${extraContent}
+                    </div>
+                `;
+            } else {
+                output += `
+                    <div style="${divStyle}">
+                        <b>${books[i].author}.</b>
+                        <i>${books[i].name}</i>
+                        &mdash; ${books[i].publicationYear}
+                        <p>${books[i].price}$</p>
+                        ${extraContent}
+                    </div>
+                `;
+            }
+        }
+        bookList.innerHTML = output;
+    }
+    </script>
+    <style>
+        #bookList div {
+            height: 100px;
+            width: auto;
+            background-color: beige;
+            border: 2px solid brown;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="showBooks()">
+    <header>НГТУ, ФБ, Лабораторная работа 6</header>
+    <main>
+        <h1></h1>
+        <div id="bookList">
+
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
