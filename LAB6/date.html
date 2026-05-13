@@ -14,6 +14,40 @@
             let today = new Date();
             out.innerHTML = "Дата и время для русской локали: " + today.toLocaleString('ru-RU') + "<br>" + "Дата и время для итальянской локали: " + today.toLocaleString('it-IT') + "<br>" + "Дата и время для арабской локали: " + today.toLocaleString('ar-AE') + "<br>" + "Дата и время для греческой локали: " + today.toLocaleString('el') + "<br>" + "Дата и время для локали Ирана: " + today.toLocaleString('fa-IR');
         }
+        function changeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+        let timerNum;
+        function startChangeColors() {
+            changeColors();
+            timerNum = setInterval(changeColors, 500);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+        function stopChangeColors() {
+            clearInterval(timerNum);
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
+        }
+        let dateTimerId;
+        function startDateUpdate() {
+            if (dateTimerId) return;
+            showDate();
+            dateTimerId = setInterval(showDate, 1000);
+            document.getElementById('update-btn').disabled = true;
+            document.getElementById('stop-update-btn').disabled = false;
+        }
+        function stopDateUpdate() {
+            if (dateTimerId) {
+                clearInterval(dateTimerId);
+                dateTimerId = null;
+            }
+            document.getElementById('update-btn').disabled = false;
+            document.getElementById('stop-update-btn').disabled = true;
+        }
+
     </script>
     <style>
         #current-date {
@@ -25,12 +59,45 @@
             border-radius: 5px;
             box-shadow: 2px 3px 4px brown;
         }
+        header {
+            transition: 0.5s;
+        }
+        button {
+            width: auto;
+            height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: brown;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: beige;
+            border: 2px solid brown;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        button:active {
+            transform: translateY(5px);
+            background-color: salmon;
+            color: aliceblue;
+        }
+        button:disabled {
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body onload="showDate()">
     <header>НГТУ, ФБ, Лабораторная работа 6</header>
     <main>
         <div id="current-date"></div>
+        <div>
+            <button onclick="startChangeColors()" id="start-btn">Старт</button>
+            <button onclick="stopChangeColors()" id="stop-btn" disabled>Стоп</button>
+            <button onclick="startDateUpdate()" id="update-btn">Обновлять время</button>
+            <button onclick="stopDateUpdate()" id="stop-update-btn" disabled>Остановить обновление времени</button>
+        </div>
     </main>
     <footer>
         &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
