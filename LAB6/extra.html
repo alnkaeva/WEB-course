@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script src="extra.js"></script>
+    <script>
+        function showButtons() {
+            const container = document.getElementById('all');
+            let output = '<h1>Интересные факты о сериалах</h1>';
+            for (let i = 0; i < seriesList.length; i++) {
+                output += `<button onclick="showInfo(${i})">${seriesList[i].title}</button>`;
+            }
+            output += '<div id="cart"></div>';
+            container.innerHTML = output;
+        }
+
+        function showInfo(index) {
+            const container = document.getElementById('cart');
+            const s = seriesList[index];
+            let output = `
+                <div class="series">
+                    <h1>${s.title}</h1>
+                    <img src="${s.img}" alt="${s.title}">
+                    <br>
+                    <b>${s.years}</b>
+                    <p>${s.actors}</p>
+                    <p>${s.plot}</p>
+                </div>`;
+            container.innerHTML = output;
+        }
+    </script>
+    <style>
+        .series {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid brown;
+            background: beige;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+        .series img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            width: auto;
+            height: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: brown;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: beige;
+            border: 2px solid brown;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        button:active {
+            transform: translateY(5px);
+            background-color: salmon;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body onload="showButtons()">
+    <header>НГТУ, ФБ, Лабораторная работа 6</header>
+    <main>
+        <div id="all">
+        </div>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
