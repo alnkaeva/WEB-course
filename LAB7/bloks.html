@@ -8,13 +8,22 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function addNewBlock() {
+            let newBlock = document.createElement('div');
+            
+            newBlock.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            newBlock.style.height = '40px';
+            newBlock.style.margin = '10px';
+
+            document.querySelector('main').appendChild(newBlock);
+        }
+    </script>
 </head>
 <body>
     <header>НГТУ, ФБ, Лабораторная работа 7</header>
     <main>
-        <ul>
-            <li><a href="bloks.html">Блоки</a></li>
-        </ul>
+        <button onclick="addNewBlock()">Добавить блок</button>
     </main>
     <footer>
         &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
