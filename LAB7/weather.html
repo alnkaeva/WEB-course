@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .weather-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .weather-table th, .weather-table td {
+            border: 1px solid brown;
+            padding: 6px;
+            text-align: left;
+        }
+        .weather-table th {
+            font-weight: bold;
+            background-color: beige;
+        }
+    </style>
+    <script>
+        function showWeather() {
+            const main = document.querySelector('main');
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok";
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(json) {
+                    let times = json.hourly.time;
+                    let temps = json.hourly.temperature_2m;
+
+                    let today = new Date().toLocaleDateString('sv-SE');
+
+                    let neededHours = [8, 12, 20];
+                    let result = [];
+
+                    for (let i = 0; i < times.length; i++) {
+                        let timeStr = times[i];
+                        if (timeStr.indexOf(today) === 0) {
+                            let hour = parseInt(timeStr.split('T')[1].split(':')[0]);
+                            if (neededHours.indexOf(hour) !== -1) {
+                                result.push({ hour: hour, temp: temps[i] });
+                            }
+                        }
+                    };
+
+                    let output = '<table class="weather-table">';
+                    output += '<tr><th>Время</th><th>Температура (°C)</th></tr>';
+                    for (let j = 0; j < result.length; j++) {
+                        let h = result[j].hour;
+                        let t = result[j].temp;
+                        output += '<tr><td>' + h + ':00</td><td>' + t + ' °C</td></tr>';
+                    }
+                    output += '</table>';
+                    output += '<p><b>Источник:</b> <a href="https://open-meteo.com/" target="_blank">open-meteo.com</a></p>';
+
+                    main.innerHTML = output;
+                })
+        }
+    </script>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <button id="btn" onclick="showWeather()">Показать погоду</button>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
