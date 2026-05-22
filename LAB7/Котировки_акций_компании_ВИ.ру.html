@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script src="share.js"></script>
+    <script>
+        function showShare(){
+            const main = document.getElementsByTagName('main')[0];
+            let table = document.createElement('table');
+            table.setAttribute('border', '1');
+            table.style.padding = '8px';
+
+            let td_date_head = document.createElement('th');
+            td_date_head.innerText = 'Дата';
+
+            let td_share_head = document.createElement('th');
+            td_share_head.innerText = 'Курс акции';
+
+            let td_diff_head = document.createElement('th');
+            td_diff_head.innerText = 'Разница';
+
+            let tr_head = document.createElement('tr');
+
+            tr_head.appendChild(td_date_head);
+            tr_head.appendChild(td_share_head);
+            tr_head.appendChild(td_diff_head);      
+            table.appendChild(tr_head);
+
+            for (let i = 0; i < date.length; i++){
+                let tr = document.createElement('tr');
+
+                let td_date = document.createElement('td');
+                let td_share = document.createElement('td');
+                let td_diff = document.createElement('td');
+
+                td_date.innerText = date[i];
+                td_share.innerText = share[i];
+
+                if (i === 0){
+                    td_diff.innerText = '-';
+                }
+                else {
+                    let diff = share[i]-share[i-1];
+                    if (diff < 0){
+                        td_diff.style.color = 'red';
+                    }
+                    else{
+                        td_diff.style.color = 'green';
+                    }
+                    td_diff.innerText = diff.toFixed(2);
+                }
+
+                tr.appendChild(td_date);
+                tr.appendChild(td_share);
+                tr.appendChild(td_diff);
+                table.appendChild(tr);
+            }
+            main.appendChild(table);
+
+            let output = "";
+
+            output += `<p>Среднее значение: ${Math.sumPrecise(share)/share.length}</p>
+                <p>Минимальное значение: ${Math.min(...share)}</p>
+                <p>Максимальное значение: ${Math.max(...share)}</p>`;
+
+            main.innerHTML += output;
+            document.getElementById('btn').disabled = true;
+        }
+    </script>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <button id="btn" onclick="showShare()">Курс акций ВИ.ру</button>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
+</html>
