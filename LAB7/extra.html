@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid brown;
+            padding: 4px;
+            text-align: center;
+        }
+        th {
+            background: beige;
+        }
+        .flex {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .col {
+            flex: 1;
+            min-width: 300px;
+        }
+        .bar {
+            display: inline-block;
+            width: 30px;
+            margin: 0 2px;
+            background-color: green;
+            border: 1px solid darkgreen;
+        }
+        .bar.forecast {
+            background-color: orange;
+            border-color: darkorange;
+        }
+    </style>
+    <script>
+        function showHistogram() {
+            let main = document.querySelector('main');
+            main.innerHTML = 'Загрузка...';
+            
+            let today = new Date();
+            let yesterday = new Date(today);
+            yesterday.setDate(today.getDate() - 1);
+            
+            let todayStr = today.toLocaleDateString('sv-SE');
+            let yesterdayStr = yesterday.toLocaleDateString('sv-SE');
+            
+            let url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346" +
+                "&hourly=temperature_2m,relativehumidity_2m" +
+                "&start_date=" + yesterdayStr + "&end_date=" + todayStr +
+                "&timezone=Asia%2FNovosibirsk&current_weather=true";
+            
+            fetch(url)
+                .then(function(response) { 
+                    return response.json(); 
+                })
+                .then(function(json) {
+                    let times = json.hourly.time;
+                    let temperatures = json.hourly.temperature_2m;
+                    let humidities = json.hourly.relativehumidity_2m;
+                    
+                    let yesterdayTemps = [];
+                    let yesterdayHum = [];
+                    let todayTemps = [];
+                    let todayHum = [];
+                    
+                    for (let i = 0; i < times.length; i++) {
+                        let timeStr = times[i];
+                        let date = timeStr.split('T')[0];
+                        let hour = parseInt(timeStr.split('T')[1].split(':')[0]);
+                        if (date === yesterdayStr) {
+                            yesterdayTemps[hour] = temperatures[i];
+                            yesterdayHum[hour] = humidities[i];
+                        } else if (date === todayStr) {
+                            todayTemps[hour] = temperatures[i];
+                            todayHum[hour] = humidities[i];
+                        }
+                    }
+                    
+                    let maxTemp = 0;
+                    for (let i = 0; i < 24; i++) {
+                        if (yesterdayTemps[i] > maxTemp) maxTemp = yesterdayTemps[i];
+                        if (todayTemps[i] > maxTemp) maxTemp = todayTemps[i];
+                    }
+                    if (maxTemp === 0) maxTemp = 1;
+                    
+                    let output = '';
+                    output += '<p><b>Текущая температура:</b> ' + json.current_weather.temperature + ' °C</p>';
+                    output += '<div class="flex">';
+                    
+                    output += '<div class="col">';
+                    output += '<h3>Температура (°C)</h3>';
+                    output += '<table>';
+                    output += '<tr><th>Час</th><th>Столбцы</th></tr>';
+                    for (let hour = 0; hour < 24; hour++) {
+                        let fact = yesterdayTemps[hour];
+                        let forecast = todayTemps[hour];
+                        let factHeight = (fact / maxTemp) * 60;
+                        if (factHeight < 2) factHeight = 2;
+                        let forecastHeight = (forecast / maxTemp) * 60;
+                        if (forecastHeight < 2) forecastHeight = 2;
+                        
+                        output += '<tr>';
+                        output += '<td>' + hour + ':00</td>';
+                        output += '<td><div style="display:flex; justify-content:center; align-items:flex-end; min-height:80px;">';
+                        output += '<div class="bar" style="height:' + factHeight + 'px;" title="Факт: ' + fact + '°C"></div>';
+                        output += '<div class="bar forecast" style="height:' + forecastHeight + 'px;" title="Прогноз: ' + forecast + '°C"></div>';
+                        output += '</div><div>Факт: ' + fact + '°C Прогноз: ' + forecast + '°C</div>';
+                        output += '</td>';
+                        output += '</tr>';
+                    }
+                    output += '</table>';
+                    output += '</div>';
+                    
+                    output += '<div class="col">';
+                    output += '<h3>Влажность (%)</h3>';
+                    output += '<table>';
+                    output += '<tr><th>Час</th><th>Столбцы</th></tr>';
+                    for (let hour = 0; hour < 24; hour++) {
+                        let fact = yesterdayHum[hour];
+                        let forecast = todayHum[hour];
+                        let factHeight = fact;
+                        if (factHeight < 2) factHeight = 2;
+                        let forecastHeight = forecast;
+                        if (forecastHeight < 2) forecastHeight = 2;
+                        
+                        output += '<tr>';
+                        output += '<td>' + hour + ':00</td>';
+                        output += '<td><div style="display:flex; justify-content:center; align-items:flex-end; min-height:100px;">';
+                        output += '<div class="bar" style="height:' + factHeight + 'px;" title="Факт: ' + fact + '%"></div>';
+                        output += '<div class="bar forecast" style="height:' + forecastHeight + 'px;" title="Прогноз: ' + forecast + '%"></div>';
+                        output += '</div><div>Факт: ' + fact + '% Прогноз: ' + forecast + '%</div>';
+                        output += '</td>';
+                        output += '</tr>';
+                    }
+                    output += '</table>';
+                    output += '</div>';
+                    
+                    output += '</div>';
+                    output += '<p><b>Источник:</b> <a href="https://open-meteo.com/" target="_blank">open-meteo.com</a></p>';
+                    main.innerHTML = output;
+                })
+        }
+    </script>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <button onclick="showHistogram()">Показать гистограммы</button>
+    </main>
+    <footer>&copy; Алёна Николаева, ФБИ-41, 2 курс, 2026</footer>
+</body>
+</html>
