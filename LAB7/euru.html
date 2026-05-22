@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николаева Алёна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function getEuroExchangeRate() {
+            let main = document.querySelector('main');
+            let url = "https://www.cbr-xml-daily.ru/daily_json.js";
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(json){
+                    let current = json.Valute.EUR.Value;
+                    let previous = json.Valute.EUR.Previous;
+                    let diff = current - previous;
+                    let diffText = '';
+                    if (diff > 0) {
+                        diffText = 'поднялся на ' + diff.toFixed(4);
+                    } else if (diff < 0) {
+                        diffText = 'опустился на ' + Math.abs(diff).toFixed(4);
+                    } else {
+                        diffText = 'не изменился';
+                    }
+                    let date = new Date(json.Date).toLocaleString('ru-RU');
+
+                    let html = `
+                        <div class="euro-info">
+                            <p><b>Курс евро:</b> ${current.toFixed(4)} ₽</p>
+                            <p><b>Предыдущий курс:</b> ${previous.toFixed(4)} ₽</p>
+                            <p><b>Разница:</b> ${diffText}</p>
+                            <p><b>Дата запроса:</b> ${date}</p>
+                            <p><b>Источник:</b> <a href="https://www.cbr-xml-daily.ru/" target="_blank">cbr-xml-daily.ru</a></p>
+                        </div>
+                    `;
+                    main.innerHTML = html;
+                });
+        }
+    </script>
+    <style>
+        .euro-info {
+            border: 1px solid brown;
+            padding: 15px;
+            margin: 20px 0;
+            background: beige;
+            font-family: Arial, sans-serif;
+        }
+        .euro-info p {
+            margin: 8px 0;
+        }
+        .euro-info b {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <button id="btn" onclick="getEuroExchangeRate()">Курс евро</button>
+    </main>
+    <footer>
+        &copy; Алёна Николаева, ФБИ-41, 2 курс, 2026
+    </footer>
+</body>
